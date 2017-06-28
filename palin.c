@@ -1,41 +1,41 @@
 #include<stdio.h>
 #include<string.h>
-void printsubstr(char *str,int low,int high)
+void printsubstr(char *str,int down,int up )
 {
-for(int i=low;i<=high;++i)
-printf("%c",str[i]);
+for(int x=down;x<=up;++x)
+printf("%c",str[x]);
 }
 int longestpalSubstr(char *str)
 {
 int maxlength=1;
 int start=0;
 int len=strlen(str);
-int low,high;
-for(int i=1;i<len;++i)
+int down,up;
+for(int x=1;x<len;++x)
 {
-low=i-1;
-high=i;
-while(low>=0 && high<len && str[low]==str[high])
+down=x-1;
+up=x;
+while(down>=0 && up<len && str[down]==str[up])
 {
-if(high - low+1>maxLength)
+if(up - down+1>maxLength)
 {
-start=low;
-maxLength=high-low+1;
+start=down;
+maxLength=up-down+1;
 }
---low;
-++high;
+--down;
+++up;
 }
-low=i-1;
-high=i+1;
-while(low>=0 && high<len && str[low]==str[high])
+down=x-1;
+up=x+1;
+while(down>=0 && up<len && str[down]==str[up])
 {
-if(high -low+1>maxLength)
+if(up -down+1>maxLength)
 {
-start=low;
-maxLength=high-low+1;
+start=down;
+maxLength=up-down+1;
 }
---low;
-++high;
+--down;
+++up;
 }
 }
 printf("Longest Palindrome");
